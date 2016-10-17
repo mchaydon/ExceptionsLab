@@ -20,10 +20,15 @@ public class NameService {
      */
     public final String extractLastName(String fullName) throws FullNameLengthException  {
         String lastName = null;
+        
+        if (fullName == null || fullName.isEmpty()){
+            throw new IllegalArgumentException("Full name is mandatory");
+        }
+        
         String[] parts = fullName.split(" ");
         
-        if(fullName == null || fullName.isEmpty() || parts.length <= 1 || parts.length > 3){
-            throw new FullNameLengthException();
+        if(parts.length <= 1 || parts.length > 3){
+            throw new IllegalArgumentException("Full name must contain atleast two parts");
         } else {
             lastName = parts[parts.length - 1];
         }

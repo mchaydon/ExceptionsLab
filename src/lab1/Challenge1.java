@@ -48,7 +48,7 @@ public class Challenge1 {
         String[] parts = fullName.split(" ");
         
         if(parts.length <= 1 || parts.length > 3){
-            throw new IllegalArgumentException("full name must contain atleast two parts");
+            throw new IllegalArgumentException("Full name must contain atleast two parts");
         } else {
             lastName = parts[parts.length - 1];
         }
