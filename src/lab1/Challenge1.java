@@ -40,9 +40,14 @@ public class Challenge1 {
     // it there.
     public final String extractLastName(String fullName) throws IllegalArgumentException{
         String lastName = null;
+        
+        if (fullName == null || fullName.isEmpty()){
+            throw new IllegalArgumentException("Full name is mandatory");
+        }
+        
         String[] parts = fullName.split(" ");
         
-        if(fullName == null || fullName.isEmpty() || parts.length <= 1 || parts.length > 3){
+        if(parts.length <= 1 || parts.length > 3){
             throw new IllegalArgumentException("full name must contain atleast two parts");
         } else {
             lastName = parts[parts.length - 1];
