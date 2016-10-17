@@ -124,27 +124,23 @@ public class Employee {
     // *no strings over 9 numbers
     public void setSsn(String ssn) throws IllegalArgumentException{
         String[] parts = ssn.split("-");
-        if (ssn.length() < 9 || ssn.length() > 11){
-            throw new IllegalArgumentException();
+        if (ssn == null){
+            throw new IllegalArgumentException("ssn can not be null");
         } 
-        if (parts.length != 3 || parts.length != 1) {
-            throw new IllegalArgumentException();
+        if (ssn.isEmpty()){
+            throw new IllegalArgumentException("ssn can not be empty");
         }
-        char[] chars = ssn.toCharArray();
-        for (char c : chars){
-            if(!Character.isDigit(c)) {
-                throw new IllegalArgumentException();
-            }
+        if (ssn.length() < 9 || ssn.length() > 11){
+            throw new IllegalArgumentException("SSN must be atleast 9 characters long, but no more than 11 characters");
+        } 
+        if (parts.length > 3 || parts.length < 1) {
+            throw new IllegalArgumentException("SSN has an incorrect number of hyphens");
         }
-//        if (ssn == null){
-//            throw new IllegalArgumentException("ssn can not be null");
-//        } else if (ssn.isEmpty()){
-//            throw new IllegalArgumentException("ssn can not be empty");
-//        } else if (!ssn.matches("[0-9]+")){
-//            throw new IllegalArgumentException("ssn can not contain letters");
-//        } else if (ssn.length() > 9){
-//            throw new IllegalArgumentException("ssn can not be longer than 9 numbers");
-//        }
+        for (int i = 0; i < parts.length; i++){
+            if (!parts[i].matches("[0-9]+")){
+            throw new IllegalArgumentException("ssn can not contain letters");
+            }   
+        }
         this.ssn = ssn;
     }
     

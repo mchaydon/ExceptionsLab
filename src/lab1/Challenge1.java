@@ -21,16 +21,17 @@ public class Challenge1 {
     public static void main(String[] args) {
         Challenge1 app = new Challenge1();
         
-        String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
         String lastName = "Unknown";
-        try {
-            lastName = app.extractLastName(fullName);
-            String msg = "Your last name is: " + lastName;
-            JOptionPane.showMessageDialog(null, msg);
-        } catch (IllegalArgumentException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        while (lastName == "Unknown" || lastName == null){
+            String fullName = JOptionPane.showInputDialog("Enter full name (use Format: first last):");
+            try {
+                lastName = app.extractLastName(fullName);
+                String msg = "Your last name is: " + lastName;
+                JOptionPane.showMessageDialog(null, msg);
+            } catch (IllegalArgumentException e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
-        
     }
     
     // write the code to extract the lastName from the fullName
