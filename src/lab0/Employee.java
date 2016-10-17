@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
  * For example, String arguments may be null or empty; other objects may be 
  * null; or primitive numbers may be out of acceptable range.
  * <p>
+ * method arguments and throw IllegalArgumentException or a custom
+ * exception if the validation fails.
+ * 
+ * @author  Jim Lombardo, jlombardo@wctc.edu
+ * @version 1.00
  * You need to validate ALL method parameters to make sure any and all 
  * arguments are valid. The only exception is when any argument is acceptable 
  * based on requirements. Fix the code below using if logic to validate
@@ -34,27 +39,27 @@ public class Employee {
         daysVacation = 0;
     }
 
-    public Employee(String firstName, String lastName, String ssn, int daysVacation) throws IllegalArgumentException {
+    public Employee(String firstName, String lastName, String ssn, int daysVacation) throws IllegalArgumentException{
         setFirstName(firstName);
         setLastName(lastName);
         setSsn(ssn);
-        this.daysVacation = daysVacation;
+        daysVacation = daysVacation;
     }
     
-    public int getDaysVacation() {
+    public final int getDaysVacation() {
         return daysVacation;
     }
     
     //Validation Rules: 
     //Days vacation must be between 0 and 120 inclusive
-    public void setDaysVacation(int daysVacation) throws DaysVacationRangeException {
+    public final void setDaysVacation(int daysVacation) throws DaysVacationRangeException {
         if (daysVacation < 0 || daysVacation > 120){
             throw new DaysVacationRangeException();
         }
         this.daysVacation = daysVacation;
     }
 
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
 
@@ -83,7 +88,7 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
 
@@ -93,7 +98,7 @@ public class Employee {
     // no names larger than 50 characters
     // no name should start with or be excusively spaces
     // names must only contain alphabetic or numeric characters, plus apostrophe and hyphens
-    public void setLastName(String lastName) throws IllegalArgumentException{
+    public final void setLastName(String lastName) throws IllegalArgumentException{
         if (lastName == null){
            throw new IllegalArgumentException("Last name can not be null");
        } 
@@ -122,7 +127,7 @@ public class Employee {
     // *no empty strings
     // *no letters
     // *no strings over 9 numbers
-    public void setSsn(String ssn) throws IllegalArgumentException{
+    public final void setSsn(String ssn) throws IllegalArgumentException{
         String[] parts = ssn.split("-");
         if (ssn == null){
             throw new IllegalArgumentException("ssn can not be null");

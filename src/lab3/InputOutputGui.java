@@ -15,7 +15,7 @@ public class InputOutputGui {
         nameService = new NameService();
     }
 
-    public void startConversation() {
+    public final void startConversation() {
         String lastName = "Unknown";
         
         while (lastName == "Unknown" || lastName == null){
