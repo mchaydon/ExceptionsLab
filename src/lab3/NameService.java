@@ -22,13 +22,13 @@ public class NameService {
         String lastName = null;
         
         if (fullName == null || fullName.isEmpty()){
-            throw new IllegalArgumentException("Full name is mandatory");
+            throw new FullNameLengthException("Full name is mandatory");
         }
         
         String[] parts = fullName.split(" ");
         
         if(parts.length <= 1 || parts.length > 3){
-            throw new IllegalArgumentException("Full name must contain atleast two parts");
+            throw new FullNameLengthException("Full name must contain atleast two parts");
         } else {
             lastName = parts[parts.length - 1];
         }
